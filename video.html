@@ -68,8 +68,8 @@
       <div class="lg:col-span-4">
         <h2 class="text-lg font-bold mb-4">Up Next</h2>
         
-        <!-- Ad in Sidebar -->
-        <div class="ad-container">
+        <!-- Sidebar Ad - Only visible on Large Screens -->
+        <div class="ad-container hidden lg:block">
           <div class="text-xs text-zinc-500 mb-2">ADVERTISEMENT</div>
           <div class="bg-zinc-800 h-52 flex items-center justify-center text-zinc-400 rounded-lg">
             [ SIDEBAR AD 300x250 ]
@@ -81,7 +81,7 @@
       </div>
     </div>
 
-    <!-- Related Videos Section (Unchanged) -->
+    <!-- Related Videos Section -->
     <div class="mt-12">
       <h2 class="text-xl font-bold mb-6">Related Videos</h2>
       <div class="video-grid" id="related"></div>
@@ -116,18 +116,15 @@
 
     const currentVideo = videos.find(v => v.id === getVideoId()) || videos[0];
 
-    // Load Video Player
     document.getElementById('video-player').src = currentVideo.embed;
     document.getElementById('video-title').textContent = currentVideo.title;
     document.getElementById('video-info').textContent = `${currentVideo.uploader} • ${currentVideo.views} views`;
 
-    // Get 3 random videos (excluding current)
     let filtered = videos.filter(v => v.id !== currentVideo.id);
-    // Shuffle and take 3
     filtered.sort(() => Math.random() - 0.5);
     const randomThree = filtered.slice(0, 3);
 
-    // Sidebar - Only 3 Random Videos
+    // Sidebar - 3 Random Videos
     document.getElementById('sidebar').innerHTML = randomThree.map(v => `
       <a href="video.html?id=${v.id}" class="flex gap-3 group">
         <img src="${v.thumb}" class="w-40 rounded-xl">
@@ -138,7 +135,7 @@
       </a>
     `).join('');
 
-    // Related Videos (Full grid - unchanged)
+    // Related Videos
     document.getElementById('related').innerHTML = filtered.map(v => `
       <a href="video.html?id=${v.id}" class="block group">
         <div class="relative rounded-xl overflow-hidden">
