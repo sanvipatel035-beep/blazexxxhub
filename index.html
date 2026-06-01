@@ -10,10 +10,16 @@
     body { background-color: #0a0a0a; color: #fff; }
     .card-hover:hover { transform: translateY(-4px); transition: all 0.3s; }
     .red-accent { color: #E50914; }
-    .video-grid { 
-      display: grid; 
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
-      gap: 20px; 
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .ad-container {
+      background-color: #18181b;
+      border: 2px dashed #450a0a;
+      border-radius: 12px;
+      overflow: hidden;
     }
   </style>
 </head>
@@ -45,7 +51,7 @@
           </a>
           <p class="text-white-500 text-sm font-bold tracking-widest pl-1">Best Porn 18+</p>
         </div>
-        
+       
         <div class="flex-1 max-w-2xl mx-6">
           <div class="relative">
             <input type="text" placeholder="Search videos..." class="w-full bg-zinc-900 border border-zinc-700 focus:border-red-600 rounded-full py-3 px-6 pl-12">
@@ -56,13 +62,30 @@
     </div>
   </nav>
 
-  <!-- LEADERBOARD AD -->
-  <div class="max-w-7xl mx-auto my-4 px-4">
-    <div class="bg-zinc-900 border border-dashed border-zinc-700 h-24 flex items-center justify-center text-zinc-500">[ LEADERBOARD AD ]</div>
+  <!-- MOBILE TOP BANNER (320x50) -->
+  <div class="max-w-7xl mx-auto px-4 md:hidden my-3">
+    <div class="ad-container">
+      <img src="https://yourdomain.com/ads/320x50-ad.jpg" alt="Sponsored" class="w-full h-[50px] object-cover">
+    </div>
+  </div>
+
+  <!-- DESKTOP LEADERBOARD -->
+  <div class="max-w-7xl mx-auto my-4 px-4 hidden md:block">
+    <div class="bg-zinc-900 border border-dashed border-zinc-700 h-24 flex items-center justify-center text-zinc-500">
+      [970x90 Desktop Leaderboard Ad]
+    </div>
   </div>
 
   <div class="max-w-7xl mx-auto px-4 py-8">
-    <h1 class="text-3xl font-bold mb-8">Top Videos</h1>
+    <h1 class="text-3xl font-bold mb-6">Top Videos</h1>
+
+    <!-- MEDIUM BANNER (320x100) -->
+    <div class="my-8 flex justify-center">
+      <div class="ad-container max-w-[320px] md:max-w-[728px]">
+        <img src="https://yourdomain.com/ads/320x100-ad.jpg" alt="Sponsored" class="w-full">
+      </div>
+    </div>
+
     <div class="video-grid" id="video-grid"></div>
   </div>
 
@@ -82,21 +105,10 @@
   </footer>
 
   <script>
-    const videos = [
-      {id:1, title:"YES! Fuck me and Cum on me!", thumb:"https://ic-vt-nss.xhcdn.com/a/MmYzNDJmOTVjMmI3MDZmZDI5NzE4OWJjYzQ0ZjkxMGU/s(w:1280,h:720),webp/024/143/553/1280x720.17036312.jpg", duration:"08:56", uploader:"TAPTUBE", views:"2K", uploaded:"10h ago"},
-      {id:2, title:"Busty Blonde Squirter Dirty Rough Fucked", thumb:"https://ic-vt-nss.xhpingcdn.com/a/NDNkYThiYmRjOWZiYzMyMThhYjEyNjUxMzYwNTZjYjI/s(w:526,h:298),webp/025/744/780/v2/526x298.234.webp", duration:"11:41", uploader:"TAPTUBE", views:"189K", uploaded:"5h ago"},
-      {id:3, title:"Beautiful College Girl Comes to My House to Give Anatomy Lessons - Angel Youngs", thumb:"https://ic-vt-nss.xhpingcdn.com/a/NDI4ZTAyOTEwY2IyOGJlNGY3M2UxODQ1ZThkNTIwOGI/s(w:526,h:298),webp/028/919/052/v2/526x298.268.webp", duration:"27:21", uploader:"SapphicX", views:"412K", uploaded:"1d ago"},
-      {id:4, title:"My stepsister likes rough sex - Emily Fox & Zeus White", thumb:"https://ic-vt-nss.xhcdn.com/a/ZDA0MDQ3YmM1YmQ0YjIyZDAzMjk1ODM3ZTkzYjVhYzU/s(w:1280,h:720),webp/026/080/247/v2/2560x1440.216.webp", duration:"15:09", uploader:"JAVDaily", views:"98K", uploaded:"3d ago"},
-      {id:5, title:"Janet and young black dick", thumb:"https://ic-vt-nss.xhcdn.com/a/OWI1ODFkNDVkNjUzYzQxYzIzM2EzMGRiYjUxMzkwYzc/s(w:1280,h:720),webp/020/964/363/1280x720.7.jpg", duration:"01:59", uploader:"BoobsLover", views:"178K", uploaded:"7h ago"},
-      {id:6, title:"Jax fucks Kendra tried out standing Missionary face to face", thumb:"https://ic-vt-nss.xhcdn.com/a/ZGQwMWQ0ZjYwZjBkODI1OGUxZDQ2Y2ZiZTMzZjc3MmY/s(w:1280,h:720),webp/014/342/538/1280x720.3.jpg", duration:"05:07", uploader:"MILFKing", views:"289K", uploaded:"1d ago"},
-      {id:7, title:"BLACKEDRAW Busty babe gets BBC on a crazy night", thumb:"https://ic-vt-nss.xhcdn.com/a/MmY4MGI3MjAwNzgzODg2OGY3ZDA3OWMyZGE2ZDNjNGI/s(w:1280,h:720),webp/027/906/476/v2/2560x1440.230.webp", duration:"08:12", uploader:"AsianX", views:"156K", uploaded:"2d ago"},
-      {id:8, title:"SEXO HARD COM BIA HOT", thumb:"https://thumb-cdn77.xvideos-cdn.com/753bbbb5-b6e7-461d-98e1-fde10411c8a2/0/xv_19_t.jpg", duration:"01:33", uploader:"TeenPassion", views:"421K", uploaded:"5h ago"},
-      {id:9, title:"Grazi Moreno, a Hot Brunette, was a maid, was caught in the bathroom, the Boss even forgot what he was going to ask her - AmoPornoBR", thumb:"https://thumb-cdn77.xvideos-cdn.com/c892c583-9168-4d35-9d07-6295ce8dede5/0/xv_30_t.jpg", duration:"10:12", uploader:"TeenPassion", views:"421K", uploaded:"5h ago"},
-      {id:10, title:"He saw his stepmother having sex last night – AmoPornoBR", thumb:"https://thumb-cdn77.xvideos-cdn.com/6d56a9a5-8abe-4000-a1a7-4edbb2f946d5/0/xv_30_p.jpg", duration:"10:04", uploader:"TeenPassion", views:"421K", uploaded:"5h ago"},
-    ];
+    const videos = [ /* ... same videos array ... */ ];
 
-    function createVideoCard(video) {
-      return `
+    function createVideoCard(video, index) {
+      let card = `
         <a href="video.html?id=${video.id}" class="block group">
           <div class="relative rounded-2xl overflow-hidden bg-zinc-900 card-hover">
             <img src="${video.thumb}" alt="${video.title}" class="w-full aspect-video object-cover">
@@ -109,9 +121,24 @@
           </div>
         </a>
       `;
+
+      // Har 4th video ke baad 300x250 Square Ad
+      if ((index + 1) % 4 === 0) {
+        card += `
+          <div class="col-span-full md:col-span-2 lg:col-span-1 my-4">
+            <div class="ad-container p-2">
+              <p class="text-red-500 text-xs text-center mb-2 tracking-widest">SPONSORED</p>
+              <img src="https://yourdomain.com/ads/300x250-ad.jpg" alt="Sponsored" class="w-full rounded-xl">
+            </div>
+          </div>
+        `;
+      }
+      return card;
     }
 
-    document.getElementById('video-grid').innerHTML = videos.map(createVideoCard).join('');
+    // Render videos with ads
+    const videoHTML = videos.map((video, index) => createVideoCard(video, index)).join('');
+    document.getElementById('video-grid').innerHTML = videoHTML;
 
     // Age Gate
     if (!localStorage.getItem('ageVerified')) {
