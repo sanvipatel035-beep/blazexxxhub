@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tube Tap 18+</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    .player-container { 
+      aspect-ratio: 16 / 9; 
+      background: #000; 
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #3f3f46;
+    }
+    .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+    .red-accent { color: #E50914; }
+  </style>
+</head>
+<body class="bg-[#0a0a0a] text-white min-h-screen">
+
+  <!-- NAVBAR -->
+  <nav class="bg-black sticky top-0 z-50 border-b border-zinc-800">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 text-3xl font-bold">
+        <span class="red-accent">Tube</span><span class="text-white">Tap</span>
+      </a>
+      
+      <div class="flex-1 max-w-2xl mx-6">
+        <div class="relative">
+          <input type="text" placeholder="Search videos..." 
+                 class="w-full bg-zinc-900 border border-zinc-700 focus:border-red-600 rounded-full py-3 px-6 pl-12">
+          <i class="fa-solid fa-magnifying-glass absolute left-5 top-3.5 text-zinc-500"></i>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+      <!-- Main Video Section -->
+      <div class="lg:col-span-8">
+        <div class="player-container mb-6">
+          <iframe id="video-player" class="w-full h-full" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <h1 id="video-title" class="text-2xl font-bold mb-3"></h1>
+        <p id="video-info" class="text-zinc-400 text-sm"></p>
+
+        <div class="flex gap-6 mt-6 text-sm">
+          <button class="flex items-center gap-2 hover:text-red-500"><i class="fa-solid fa-thumbs-up"></i> Like</button>
+          <button class="flex items-center gap-2 hover:text-red-500"><i class="fa-solid fa-heart"></i> Favorite</button>
+          <button class="flex items-center gap-2 hover:text-red-500"><i class="fa-solid fa-share"></i> Share</button>
+        </div>
+
+        <!-- Rectangle Ad -->
+        <div class="my-8 bg-zinc-900 border border-dashed border-zinc-700 h-60 rounded-2xl flex items-center justify-center text-zinc-500">
+          [ RECTANGLE AD 300x250 ]
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="lg:col-span-4">
+        <h2 class="text-lg font-bold mb-4">Up Next</h2>
+        <div id="sidebar" class="space-y-4"></div>
+      </div>
+    </div>
+
+    <!-- Related Videos -->
+    <div class="mt-12">
+      <h2 class="text-xl font-bold mb-6">Related Videos</h2>
+      <div class="video-grid" id="related"></div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-black border-t border-zinc-800 mt-16 py-12">
+    <div class="max-w-7xl mx-auto px-4 text-center text-zinc-500 text-sm">
+      © 2026 Tube Tap 18+. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    const videos = [
+      {id:1, title:"YES! Fuck me and Cum on me", thumb:"https://ic-vt-nss.xhcdn.com/a/MmYzNDJmOTVjMmI3MDZmZDI5NzE4OWJjYzQ0ZjkxMGU/s(w:1280,h:720),webp/024/143/553/1280x720.17036312.jpg", duration:"08:56", uploader:"DesiHeat", views:"245K", embed:"https://mxdrop.sx/e/67p4x08pt33vgw"},
+      {id:2, title:"Busty Blonde Squirter Dirty Rough Fucked", thumb:"https://ic-vt-nss.xhpingcdn.com/a/NDNkYThiYmRjOWZiYzMyMThhYjEyNjUxMzYwNTZjYjI/s(w:526,h:298),webp/025/744/780/v2/526x298.234.webp", duration:"11:41", uploader:"LatinaFire", views:"189K", embed:"https://mxdrop.sx/e/mk1r4m9zi0kvl6"},
+      {id:3, title:"Beautiful College Girl Comes to My House to Give Anatomy Lessons - Angel Youngs", thumb:"https://ic-vt-nss.xhpingcdn.com/a/NDI4ZTAyOTEwY2IyOGJlNGY3M2UxODQ1ZThkNTIwOGI/s(w:526,h:298),webp/028/919/052/v2/526x298.268.webp", duration:"27:21", uploader:"SapphicX", views:"412K", embed:"https://mxdrop.sx/e/8l1d0r0ma0qg39"},
+      {id:4, title:"My stepsister likes rough sex - Emily Fox & Zeus White", thumb:"https://ic-vt-nss.xhcdn.com/a/ZDA0MDQ3YmM1YmQ0YjIyZDAzMjk1ODM3ZTkzYjVhYzU/s(w:1280,h:720),webp/026/080/247/v2/2560x1440.216.webp", duration:"15:09", uploader:"JAVDaily", views:"98K", embed:"https://mxdrop.sx/e/el6j7xqjalmz1v"},
+      {id:5, title:"Janet and young black dick", thumb:"https://ic-vt-nss.xhcdn.com/a/OWI1ODFkNDVkNjUzYzQxYzIzM2EzMGRiYjUxMzkwYzc/s(w:1280,h:720),webp/020/964/363/1280x720.7.jpg", duration:"01:59", uploader:"JAVDaily", views:"98K", embed:"https://mxdrop.sx/e/039wlrv8u0e7j"},
+      {id:6, title:"Jax fucks Kendra tried out standing Missionary face to face", thumb:"https://ic-vt-nss.xhcdn.com/a/ZGQwMWQ0ZjYwZjBkODI1OGUxZDQ2Y2ZiZTMzZjc3MmY/s(w:1280,h:720),webp/014/342/538/1280x720.3.jpg", duration:"05:07", uploader:"JAVDaily", views:"98K", embed:"https://mxdrop.sx/e/4dvzxdx8t73d9g"},
+      {id:7, title:"BLACKEDRAW Busty babe gets BBC on a crazy night", thumb:"https://ic-vt-nss.xhcdn.com/a/MmY4MGI3MjAwNzgzODg2OGY3ZDA3OWMyZGE2ZDNjNGI/s(w:1280,h:720),webp/027/906/476/v2/2560x1440.230.webp", duration:"08:12", uploader:"JAVDaily", views:"98K", embed:"https://mxdrop.sx/e/039wlo34u3k1g6"},
+      {id:8, title:"TUSHY, Anal-crazy Ski instructor Liya shows off her skills", thumb:"https://ic-vt-nss.xhcdn.com/a/NGZhOWZhZjIxNzc5NGM1YzU1ZTlkMjA5OGQyMTcwNDU/s(w:1280,h:720),webp/019/844/969/1280x720.4.jpg", duration:"12:21", uploader:"JAVDaily", views:"98K", embed:"https://mxdrop.sx/e/l7nrz31vt3mljl"},
+    ];
+
+    function getVideoId() {
+      const params = new URLSearchParams(window.location.search);
+      return parseInt(params.get('id')) || 1;
+    }
+
+    const currentVideo = videos.find(v => v.id === getVideoId()) || videos[0];
+
+    // Load Video Player
+    document.getElementById('video-player').src = currentVideo.embed;
+    document.getElementById('video-title').textContent = currentVideo.title;
+    document.getElementById('video-info').textContent = `${currentVideo.uploader} • ${currentVideo.views} views`;
+
+    // Related Videos
+    const related = videos.filter(v => v.id !== currentVideo.id);
+
+    document.getElementById('related').innerHTML = related.map(v => `
+      <a href="video.html?id=${v.id}" class="block group">
+        <div class="relative rounded-xl overflow-hidden">
+          <img src="${v.thumb}" class="w-full aspect-video object-cover">
+          <div class="absolute bottom-2 right-2 bg-black/80 text-xs px-2 py-1 rounded">${v.duration}</div>
+        </div>
+        <p class="mt-3 text-sm font-medium group-hover:text-red-500 line-clamp-2">${v.title}</p>
+      </a>
+    `).join('');
+
+    // Sidebar
+    document.getElementById('sidebar').innerHTML = related.map(v => `
+      <a href="video.html?id=${v.id}" class="flex gap-3 group">
+        <img src="${v.thumb}" class="w-40 rounded-xl">
+        <div>
+          <p class="line-clamp-2 text-sm group-hover:text-red-500">${v.title}</p>
+          <p class="text-xs text-zinc-500 mt-1">${v.uploader}</p>
+        </div>
+      </a>
+    `).join('');
+  </script>
+</body>
+</html>
