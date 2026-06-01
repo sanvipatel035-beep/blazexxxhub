@@ -25,6 +25,7 @@
 </head>
 <body class="min-h-screen">
 
+  <!-- AGE GATE -->
   <div id="age-gate" class="fixed inset-0 bg-black/95 flex items-center justify-center z-[9999] hidden">
     <div class="max-w-md mx-auto text-center px-6">
       <h1 class="text-5xl font-bold red-accent mb-6">Tube Tap 18+</h1>
@@ -40,6 +41,7 @@
     </div>
   </div>
 
+  <!-- NAVBAR -->
   <nav class="bg-black sticky top-0 z-50 border-b border-zinc-800">
     <div class="max-w-7xl mx-auto px-4 py-4">
       <div class="flex items-center justify-between">
@@ -60,6 +62,7 @@
     </div>
   </nav>
 
+  <!-- 320x50 MOBILE TOP BANNER AD -->
   <div class="max-w-7xl mx-auto px-4 md:hidden my-3">
     <div class="ad-container flex justify-center">
       <script>
@@ -75,9 +78,19 @@
     </div>
   </div>
 
+  <!-- DESKTOP LEADERBOARD -->
   <div class="max-w-7xl mx-auto my-4 px-4 hidden md:block">
-    <div class="bg-zinc-900 border border-dashed border-zinc-700 h-24 flex items-center justify-center text-zinc-500">
-      [ LEADERBOARD AD ]
+    <div class="bg-zinc-900 border border-dashed border-zinc-700 py-4 flex items-center justify-center text-zinc-500">
+      <script>
+        atOptions = {
+          'key' : '1d34c42a4b04041c48118a2fa14c62d9',
+          'format' : 'iframe',
+          'height' : 250,
+          'width' : 300,
+          'params' : {}
+        };
+      </script>
+      <script src="https://www.highperformanceformat.com/1d34c42a4b04041c48118a2fa14c62d9/invoke.js"></script>
     </div>
   </div>
 
@@ -86,6 +99,7 @@
     <div class="video-grid" id="video-grid"></div>
   </div>
 
+  <!-- FOOTER -->
   <footer class="bg-black border-t border-zinc-800 mt-16">
     <div class="max-w-7xl mx-auto px-4 py-12">
       <div class="flex flex-col md:flex-row justify-between items-center gap-6">
@@ -129,12 +143,22 @@
         </a>
       `;
 
-      // Khali Ad Container har 4th video ke baad
+      // 300x250 Ad Container har 4th video ke baad
       if ((index + 1) % 4 === 0) {
         html += `
           <div class="col-span-full my-6 flex justify-center">
-            <div class="ad-container p-3 flex flex-col items-center justify-center w-[300px] h-[250px]">
-              <p class="text-zinc-600 text-xs text-center font-bold tracking-widest">SPONSORED AD SPACE</p>
+            <div class="ad-container p-3 flex flex-col items-center justify-center w-[300px]">
+              <p class="text-red-500 text-xs text-center mb-3 font-bold tracking-widest">SPONSORED</p>
+              <script>
+                atOptions = {
+                  'key' : '1d34c42a4b04041c48118a2fa14c62d9',
+                  'format' : 'iframe',
+                  'height' : 250,
+                  'width' : 300,
+                  'params' : {}
+                };
+              <\/script>
+              <script src="https://www.highperformanceformat.com/1d34c42a4b04041c48118a2fa14c62d9/invoke.js"><\/script>
             </div>
           </div>
         `;
