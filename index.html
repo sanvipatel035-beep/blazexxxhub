@@ -10,10 +10,16 @@
     body { background-color: #0a0a0a; color: #fff; }
     .card-hover:hover { transform: translateY(-4px); transition: all 0.3s; }
     .red-accent { color: #E50914; }
-    .video-grid { 
-      display: grid; 
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
-      gap: 20px; 
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .ad-container {
+      background-color: #18181b;
+      border: 2px dashed #450a0a;
+      border-radius: 12px;
+      overflow: hidden;
     }
   </style>
 </head>
@@ -45,7 +51,7 @@
           </a>
           <p class="text-white-500 text-sm font-bold tracking-widest pl-1">Best Porn 18+</p>
         </div>
-        
+       
         <div class="flex-1 max-w-2xl mx-6">
           <div class="relative">
             <input type="text" placeholder="Search videos..." class="w-full bg-zinc-900 border border-zinc-700 focus:border-red-600 rounded-full py-3 px-6 pl-12">
@@ -56,9 +62,27 @@
     </div>
   </nav>
 
-  <!-- LEADERBOARD AD -->
-  <div class="max-w-7xl mx-auto my-4 px-4">
-    <div class="bg-zinc-900 border border-dashed border-zinc-700 h-24 flex items-center justify-center text-zinc-500">[ LEADERBOARD AD ]</div>
+  <!-- 320x50 MOBILE TOP BANNER AD -->
+  <div class="max-w-7xl mx-auto px-4 md:hidden my-3">
+    <div class="ad-container">
+      <script>
+        atOptions = {
+          'key' : '8988de2ac4ad606d17e372c5b99081bb',
+          'format' : 'iframe',
+          'height' : 50,
+          'width' : 320,
+          'params' : {}
+        };
+      </script>
+      <script src="https://www.highperformanceformat.com/8988de2ac4ad606d17e372c5b99081bb/invoke.js"></script>
+    </div>
+  </div>
+
+  <!-- DESKTOP LEADERBOARD -->
+  <div class="max-w-7xl mx-auto my-4 px-4 hidden md:block">
+    <div class="bg-zinc-900 border border-dashed border-zinc-700 h-24 flex items-center justify-center text-zinc-500">
+      [ LEADERBOARD AD ]
+    </div>
   </div>
 
   <div class="max-w-7xl mx-auto px-4 py-8">
@@ -95,8 +119,8 @@
       {id:10, title:"He saw his stepmother having sex last night – AmoPornoBR", thumb:"https://thumb-cdn77.xvideos-cdn.com/6d56a9a5-8abe-4000-a1a7-4edbb2f946d5/0/xv_30_p.jpg", duration:"10:04", uploader:"TeenPassion", views:"421K", uploaded:"5h ago"},
     ];
 
-    function createVideoCard(video) {
-      return `
+    function createVideoCard(video, index) {
+      let html = `
         <a href="video.html?id=${video.id}" class="block group">
           <div class="relative rounded-2xl overflow-hidden bg-zinc-900 card-hover">
             <img src="${video.thumb}" alt="${video.title}" class="w-full aspect-video object-cover">
@@ -109,9 +133,31 @@
           </div>
         </a>
       `;
+
+      // 300x250 Ad har 4th video ke baad
+      if ((index + 1) % 4 === 0) {
+        html += `
+          <div class="col-span-full my-6">
+            <div class="ad-container p-3">
+              <p class="text-red-500 text-xs text-center mb-3 font-bold tracking-widest">SPONSORED</p>
+              <script>
+                atOptions = {
+                  'key' : '1d34c42a4b04041c48118a2fa14c62d9',
+                  'format' : 'iframe',
+                  'height' : 250,
+                  'width' : 300,
+                  'params' : {}
+                };
+              <\/script>
+              <script src="https://www.highperformanceformat.com/1d34c42a4b04041c48118a2fa14c62d9/invoke.js"><\/script>
+            </div>
+          </div>
+        `;
+      }
+      return html;
     }
 
-    document.getElementById('video-grid').innerHTML = videos.map(createVideoCard).join('');
+    document.getElementById('video-grid').innerHTML = videos.map((video, i) => createVideoCard(video, i)).join('');
 
     // Age Gate
     if (!localStorage.getItem('ageVerified')) {
