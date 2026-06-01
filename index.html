@@ -19,8 +19,7 @@
       background-color: #18181b;
       border: 2px dashed #450a0a;
       border-radius: 12px;
-      padding: 12px;
-      text-align: center;
+      overflow: hidden;
     }
   </style>
 </head>
@@ -63,7 +62,7 @@
     </div>
   </nav>
 
-  <!-- 320x50 Mobile Top Banner -->
+  <!-- 320x50 MOBILE TOP BANNER AD -->
   <div class="max-w-7xl mx-auto px-4 md:hidden my-3">
     <div class="ad-container">
       <script>
@@ -79,7 +78,7 @@
     </div>
   </div>
 
-  <!-- Desktop Leaderboard -->
+  <!-- DESKTOP LEADERBOARD -->
   <div class="max-w-7xl mx-auto my-4 px-4 hidden md:block">
     <div class="bg-zinc-900 border border-dashed border-zinc-700 h-24 flex items-center justify-center text-zinc-500">
       [ LEADERBOARD AD ]
@@ -107,7 +106,7 @@
   </footer>
 
   <script>
-    const videos = [ /* tumhara videos array */ 
+    const videos = [
       {id:1, title:"YES! Fuck me and Cum on me!", thumb:"https://ic-vt-nss.xhcdn.com/a/MmYzNDJmOTVjMmI3MDZmZDI5NzE4OWJjYzQ0ZjkxMGU/s(w:1280,h:720),webp/024/143/553/1280x720.17036312.jpg", duration:"08:56", uploader:"TAPTUBE", views:"2K", uploaded:"10h ago"},
       {id:2, title:"Busty Blonde Squirter Dirty Rough Fucked", thumb:"https://ic-vt-nss.xhpingcdn.com/a/NDNkYThiYmRjOWZiYzMyMThhYjEyNjUxMzYwNTZjYjI/s(w:526,h:298),webp/025/744/780/v2/526x298.234.webp", duration:"11:41", uploader:"TAPTUBE", views:"189K", uploaded:"5h ago"},
       {id:3, title:"Beautiful College Girl Comes to My House to Give Anatomy Lessons - Angel Youngs", thumb:"https://ic-vt-nss.xhpingcdn.com/a/NDI4ZTAyOTEwY2IyOGJlNGY3M2UxODQ1ZThkNTIwOGI/s(w:526,h:298),webp/028/919/052/v2/526x298.268.webp", duration:"27:21", uploader:"SapphicX", views:"412K", uploaded:"1d ago"},
@@ -120,37 +119,8 @@
       {id:10, title:"He saw his stepmother having sex last night – AmoPornoBR", thumb:"https://thumb-cdn77.xvideos-cdn.com/6d56a9a5-8abe-4000-a1a7-4edbb2f946d5/0/xv_30_p.jpg", duration:"10:04", uploader:"TeenPassion", views:"421K", uploaded:"5h ago"},
     ];
 
-    function load300x250Ad(container) {
-      const adDiv = document.createElement('div');
-      adDiv.innerHTML = `
-        <p class="text-red-500 text-xs text-center mb-3 font-bold tracking-widest">SPONSORED</p>
-      `;
-      container.appendChild(adDiv);
-
-      // First Script
-      const script1 = document.createElement('script');
-      script1.textContent = `
-        atOptions = {
-          'key' : '1d34c42a4b04041c48118a2fa14c62d9',
-          'format' : 'iframe',
-          'height' : 250,
-          'width' : 300,
-          'params' : {}
-        };
-      `;
-      container.appendChild(script1);
-
-      // Second Script
-      const script2 = document.createElement('script');
-      script2.src = "https://www.highperformanceformat.com/1d34c42a4b04041c48118a2fa14c62d9/invoke.js";
-      container.appendChild(script2);
-    }
-
     function createVideoCard(video, index) {
-      const wrapper = document.createElement('div');
-      
-      // Video Card
-      const cardHTML = `
+      let html = `
         <a href="video.html?id=${video.id}" class="block group">
           <div class="relative rounded-2xl overflow-hidden bg-zinc-900 card-hover">
             <img src="${video.thumb}" alt="${video.title}" class="w-full aspect-video object-cover">
@@ -163,31 +133,31 @@
           </div>
         </a>
       `;
-      const cardDiv = document.createElement('div');
-      cardDiv.innerHTML = cardHTML;
-      wrapper.appendChild(cardDiv.firstElementChild);
 
-      // Add 300x250 Ad after every 4th video
+      // 300x250 Ad har 4th video ke baad
       if ((index + 1) % 4 === 0) {
-        const adWrapper = document.createElement('div');
-        adWrapper.className = "col-span-full my-6";
-        const adContainer = document.createElement('div');
-        adContainer.className = "ad-container";
-        adWrapper.appendChild(adContainer);
-        wrapper.appendChild(adWrapper);
-        
-        // Load ad after a small delay
-        setTimeout(() => load300x250Ad(adContainer), 300);
+        html += `
+          <div class="col-span-full my-6">
+            <div class="ad-container p-3">
+              <p class="text-red-500 text-xs text-center mb-3 font-bold tracking-widest">SPONSORED</p>
+              <script>
+                atOptions = {
+                  'key' : '1d34c42a4b04041c48118a2fa14c62d9',
+                  'format' : 'iframe',
+                  'height' : 250,
+                  'width' : 300,
+                  'params' : {}
+                };
+              <\/script>
+              <script src="https://www.highperformanceformat.com/1d34c42a4b04041c48118a2fa14c62d9/invoke.js"><\/script>
+            </div>
+          </div>
+        `;
       }
-
-      return wrapper;
+      return html;
     }
 
-    // Render Grid
-    const grid = document.getElementById('video-grid');
-    videos.forEach((video, index) => {
-      grid.appendChild(createVideoCard(video, index));
-    });
+    document.getElementById('video-grid').innerHTML = videos.map((video, i) => createVideoCard(video, i)).join('');
 
     // Age Gate
     if (!localStorage.getItem('ageVerified')) {
