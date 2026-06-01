@@ -15,6 +15,21 @@
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 20px;
     }
+
+    /* Adsterra ke hidden transparent overlays ko back mein dhakelne ke liye */
+    iframe[src*="highperformanceformat"], 
+    iframe[src*="effectivecpmnetwork"],
+    div[id*="container-"] ~ div {
+      pointer-events: none !important;
+      z-index: -9999 !important;
+    }
+
+    /* Taki user video card par click kar sake bina kisi rukawat ke */
+    #video-grid a {
+      position: relative;
+      z-index: 10;
+      pointer-events: auto !important;
+    }
   </style>
 </head>
 <body class="min-h-screen">
