@@ -61,32 +61,14 @@
   </nav>
 
   <div class="max-w-7xl mx-auto px-4 md:hidden my-3">
-    <div class="ad-container">
-      <script>
-        atOptions = {
-          'key' : '8988de2ac4ad606d17e372c5b99081bb',
-          'format' : 'iframe',
-          'height' : 50,
-          'width' : 320,
-          'params' : {}
-        };
-      </script>
-      <script src="https://www.highperformanceformat.com/8988de2ac4ad606d17e372c5b99081bb/invoke.js"></script>
+    <div class="ad-container h-[50px] flex items-center justify-center text-zinc-600 text-sm">
+      [ MOBILE AD SPACE ]
     </div>
   </div>
 
   <div class="max-w-7xl mx-auto my-4 px-4 hidden md:block">
-    <div class="bg-zinc-900 border border-dashed border-zinc-700 py-4 flex items-center justify-center text-zinc-500">
-      <script>
-        atOptions = {
-          'key' : '1d34c42a4b04041c48118a2fa14c62d9',
-          'format' : 'iframe',
-          'height' : 250,
-          'width' : 300,
-          'params' : {}
-        };
-      </script>
-      <script src="https://www.highperformanceformat.com/1d34c42a4b04041c48118a2fa14c62d9/invoke.js"></script>
+    <div class="bg-zinc-900 border border-dashed border-zinc-700 h-24 flex items-center justify-center text-zinc-500">
+      [ LEADERBOARD AD ]
     </div>
   </div>
 
@@ -138,22 +120,12 @@
         </a>
       `;
 
-      // 300x250 Ad har 4th video ke baad
+      // Khali Ad Container har 4th video ke baad (Scripts hata di gayi hain)
       if ((index + 1) % 4 === 0) {
         html += `
-          <div class="col-span-full my-6">
-            <div class="ad-container p-3 flex justify-center flex-col items-center">
-              <p class="text-red-500 text-xs text-center mb-3 font-bold tracking-widest">SPONSORED</p>
-              <script>
-                atOptions = {
-                  'key' : '1d34c42a4b04041c48118a2fa14c62d9',
-                  'format' : 'iframe',
-                  'height' : 250,
-                  'width' : 300,
-                  'params' : {}
-                };
-              <\/script>
-              <script src="https://www.highperformanceformat.com/1d34c42a4b04041c48118a2fa14c62d9/invoke.js"><\/script>
+          <div class="col-span-full my-6 flex justify-center">
+            <div class="ad-container p-3 flex flex-col items-center justify-center w-[300px] h-[250px]">
+              <p class="text-zinc-600 text-xs text-center font-bold tracking-widest">SPONSORED AD SPACE</p>
             </div>
           </div>
         `;
