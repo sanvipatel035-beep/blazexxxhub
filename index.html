@@ -62,24 +62,29 @@
     </div>
   </nav>
 
-  <!-- 320x50 MOBILE TOP BANNER -->
+  <!-- MOBILE TOP BANNER (320x50) -->
   <div class="max-w-7xl mx-auto px-4 md:hidden my-3">
     <div class="ad-container">
-      <img src="PUT_YOUR_320x50_IMAGE_LINK_HERE.jpg" alt="Ad" class="w-full h-[50px] object-cover">
+      <img src="https://yourdomain.com/ads/320x50-ad.jpg" alt="Sponsored" class="w-full h-[50px] object-cover">
     </div>
   </div>
 
-  <!-- DESKTOP LEADERBOARD (Optional - agar 728x90 use karna hai toh rakho) -->
+  <!-- DESKTOP LEADERBOARD -->
   <div class="max-w-7xl mx-auto my-4 px-4 hidden md:block">
     <div class="bg-zinc-900 border border-dashed border-zinc-700 h-24 flex items-center justify-center text-zinc-500">
-      [728x90 or 970x90 Desktop Ad]
+      [970x90 Desktop Leaderboard Ad]
     </div>
   </div>
 
   <div class="max-w-7xl mx-auto px-4 py-8">
     <h1 class="text-3xl font-bold mb-6">Top Videos</h1>
 
-    <!-- 320x100 (Agar chaho toh yeh bhi add kar sakte hain, abhi chhoda hai) -->
+    <!-- MEDIUM BANNER (320x100) -->
+    <div class="my-8 flex justify-center">
+      <div class="ad-container max-w-[320px] md:max-w-[728px]">
+        <img src="https://yourdomain.com/ads/320x100-ad.jpg" alt="Sponsored" class="w-full">
+      </div>
+    </div>
 
     <div class="video-grid" id="video-grid"></div>
   </div>
@@ -100,10 +105,10 @@
   </footer>
 
   <script>
-    const videos = [ /* tumhara pura videos array yahin paste kar do */ ];
+    const videos = [ /* ... same videos array ... */ ];
 
     function createVideoCard(video, index) {
-      let html = `
+      let card = `
         <a href="video.html?id=${video.id}" class="block group">
           <div class="relative rounded-2xl overflow-hidden bg-zinc-900 card-hover">
             <img src="${video.thumb}" alt="${video.title}" class="w-full aspect-video object-cover">
@@ -117,23 +122,25 @@
         </a>
       `;
 
-      // Har 4th video ke baad 300x250 Ad
+      // Har 4th video ke baad 300x250 Square Ad
       if ((index + 1) % 4 === 0) {
-        html += `
-          <div class="col-span-full my-6">
-            <div class="ad-container p-3">
-              <p class="text-red-500 text-xs text-center mb-3 font-bold tracking-widest">SPONSORED</p>
-              <img src="PUT_YOUR_300x250_IMAGE_LINK_HERE.jpg" alt="Sponsored Ad" class="w-full rounded-xl">
+        card += `
+          <div class="col-span-full md:col-span-2 lg:col-span-1 my-4">
+            <div class="ad-container p-2">
+              <p class="text-red-500 text-xs text-center mb-2 tracking-widest">SPONSORED</p>
+              <img src="https://yourdomain.com/ads/300x250-ad.jpg" alt="Sponsored" class="w-full rounded-xl">
             </div>
           </div>
         `;
       }
-      return html;
+      return card;
     }
 
-    document.getElementById('video-grid').innerHTML = videos.map((video, i) => createVideoCard(video, i)).join('');
+    // Render videos with ads
+    const videoHTML = videos.map((video, index) => createVideoCard(video, index)).join('');
+    document.getElementById('video-grid').innerHTML = videoHTML;
 
-    // Age Gate Code (same as before)
+    // Age Gate
     if (!localStorage.getItem('ageVerified')) {
       document.getElementById('age-gate').classList.remove('hidden');
     }
