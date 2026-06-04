@@ -27,13 +27,12 @@
   </style>
 </head>
 <body class="bg-[#0a0a0a] text-white min-h-screen">
-  <!-- NAVBAR -->
   <nav class="bg-black sticky top-0 z-50 border-b border-zinc-800">
     <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
       <a href="index.html" class="flex items-center gap-2 text-3xl font-bold">
         <span class="red-accent">Tube</span><span class="text-white">Tap</span>
       </a>
-     
+      
       <div class="flex-1 max-w-2xl mx-6">
         <div class="relative">
           <input type="text" placeholder="Search videos..."
@@ -46,7 +45,6 @@
 
   <div class="max-w-7xl mx-auto px-4 py-8">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-      <!-- Main Video Section -->
       <div class="lg:col-span-8">
         <div class="player-container mb-6">
           <iframe id="video-player" class="w-full h-full" frameborder="0" allowfullscreen></iframe>
@@ -58,37 +56,40 @@
           <button class="flex items-center gap-2 hover:text-red-500"><i class="fa-solid fa-heart"></i> Favorite</button>
           <button class="flex items-center gap-2 hover:text-red-500"><i class="fa-solid fa-share"></i> Share</button>
         </div>
-        <!-- Rectangle Ad -->
         <div class="my-8 bg-zinc-900 border border-dashed border-zinc-700 h-60 rounded-2xl flex items-center justify-center text-zinc-500">
           [ RECTANGLE AD 300x250 ]
         </div>
       </div>
 
-      <!-- Sidebar -->
       <div class="lg:col-span-4">
         <h2 class="text-lg font-bold mb-4">Up Next</h2>
         
-        <!-- Sidebar Ad - Only visible on Large Screens -->
         <div class="ad-container hidden lg:block">
           <div class="text-xs text-zinc-500 mb-2">ADVERTISEMENT</div>
-          <div class="bg-zinc-800 h-52 flex items-center justify-center text-zinc-400 rounded-lg">
-            [ SIDEBAR AD 300x250 ]
+          <div class="flex items-center justify-center overflow-hidden rounded-lg">
+            <script>
+              atOptions = {
+                'key' : '1d34c42a4b04041c48118a2fa14c62d9',
+                'format' : 'iframe',
+                'height' : 250,
+                'width' : 300,
+                'params' : {}
+              };
+            </script>
+            <script src="https://www.highperformanceformat.com/1d34c42a4b04041c48118a2fa14c62d9/invoke.js"></script>
           </div>
         </div>
 
-        <!-- Only 3 Random Videos -->
         <div id="sidebar" class="space-y-4"></div>
       </div>
     </div>
 
-    <!-- Related Videos Section -->
     <div class="mt-12">
       <h2 class="text-xl font-bold mb-6">Related Videos</h2>
       <div class="video-grid" id="related"></div>
     </div>
   </div>
 
-  <!-- FOOTER -->
   <footer class="bg-black border-t border-zinc-800 mt-16 py-12">
     <div class="max-w-7xl mx-auto px-4 text-center text-zinc-500 text-sm">
       © 2026 Tube Tap 18+. All rights reserved.
